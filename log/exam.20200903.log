@@ -1,0 +1,2 @@
+2020-09-03 09:08:49.694  WARN 688 --- [redisMessageListenerContainer-5] s.s.d.r.RedisOperationsSessionRepository : Unable to publish SessionDestroyedEvent for session 4a9b256a-2e5f-49e0-a1b2-f914e0fffaca
+2020-09-03 09:09:34.847  WARN 688 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11h5m45s877ms776µs900ns).
