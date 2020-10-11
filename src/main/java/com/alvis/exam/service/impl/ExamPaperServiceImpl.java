@@ -155,6 +155,13 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
             examPaper.setCreateTime(now);
             examPaper.setCreateUser(user.getId());
             examPaper.setDeleted(false);
+
+            //处理一下时间
+            List<String> dateTimes = examPaperEditDTO.getLimitDateTime();
+            if (ExamPaperTypeEnum.TimeLimit == ExamPaperTypeEnum.fromCode(examPaper.getPaperType())) {
+                examPaper.setLimitStartTime(DateTimeUtil.parse(dateTimes.get(0), DateTimeUtil.STANDER_FORMAT));
+                examPaper.setLimitEndTime(DateTimeUtil.parse(dateTimes.get(1), DateTimeUtil.STANDER_FORMAT));
+            }
             examPaperMapper.insertSelective(examPaper);
         } else {
             //更新试卷的话前端会传id过来
@@ -166,6 +173,13 @@ public class ExamPaperServiceImpl extends BaseServiceImpl<ExamPaper> implements 
             examPaper.setName(examPaperEditDTO.getName());
             examPaper.setSuggestTime(examPaperEditDTO.getSuggestTime());
             examPaper.setQuestionCount(examPaperEditDTO.getQuestionCount());
+
+            //处理一下时间
+            List<String> dateTimes = examPaperEditDTO.getLimitDateTime();
+            if (ExamPaperTypeEnum.TimeLimit == ExamPaperTypeEnum.fromCode(examPaper.getPaperType())) {
+                examPaper.setLimitStartTime(DateTimeUtil.parse(dateTimes.get(0), DateTimeUtil.STANDER_FORMAT));
+                examPaper.setLimitEndTime(DateTimeUtil.parse(dateTimes.get(1), DateTimeUtil.STANDER_FORMAT));
+            }
             examPaperMapper.updateByPrimaryKeySelective(examPaper);
         }
         return examPaper;

@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Data
 public class ExamPaperEditDTO {
@@ -22,6 +23,9 @@ public class ExamPaperEditDTO {
     private Integer suggestTime;
     @NotNull
     private Integer questionCount;
+
+    //限制时间  时段试卷才会限制时间
+    private List<String> limitDateTime;
 
 
 }
